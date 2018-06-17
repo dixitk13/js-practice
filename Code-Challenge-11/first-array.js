@@ -31,7 +31,7 @@ const texasss = [
     us: true,
   },
 ]
-
+console.log("--- first array START --- ")
 // Part 1 - Find all users older than 24
 const usersOlderThan24 = texasss.filter(x => x.age > 24)
 console.log("users older than 24 " , usersOlderThan24)
@@ -43,3 +43,6 @@ console.log("total " , total)
 // Part 3 - List all female coders
 const femaleCoders = texasss.filter(x => x.gender === 'f')
 console.log("female coders " , femaleCoders)
+console.log("--- first array END --- ")
+
+module.exports.texasss = texasss;

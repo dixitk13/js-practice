@@ -39,6 +39,7 @@ const newieyork = [
   },
 ]
 
+console.log("--- second array START--- ")
 // Part 1 - List all users in the US in ascending order
 const usersInUS = newieyork.filter(x => x.us)
 console.log("users in US ", usersInUS)
@@ -50,3 +51,6 @@ console.log("sorted age-wise ", sortedAge)
 // Part 3 - List all female coders
 const femaleCoders = newieyork.filter(x => x.gender === 'f')
 console.log("female coders ", femaleCoders)
+console.log("--- second array END --- ")
+
+module.exports.newieyork = newieyork;
