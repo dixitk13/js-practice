@@ -33,7 +33,13 @@ const texasss = [
 ]
 
 // Part 1 - Find all users older than 24
-const usersOlderThan14 = texasss.filter(x => x > 24);
-console.log("users 24 " , usersOlderThan24)
+const usersOlderThan24 = texasss.filter(x => x.age > 24)
+console.log("users older than 24 " , usersOlderThan24)
+
 // Part 2 - Find the total age of all users
+const total = texasss.reduce((acc, x) => acc + x.age, 0)
+console.log("total " , total)
+
 // Part 3 - List all female coders
+const femaleCoders = texasss.filter(x => x.gender === 'f')
+console.log("female coders " , femaleCoders)
