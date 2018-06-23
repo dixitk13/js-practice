@@ -41,7 +41,7 @@ const newieyork = [
 
 console.log("--- second array START--- ")
 // Part 1 - List all users in the US in ascending order
-const usersInUS = newieyork.filter(x => x.us)
+const usersInUS = newieyork.filter(x => x.us).sort((x, y) => y.name.toLowerCase() - x.name.toLowerCase())
 console.log("users in US ", usersInUS)
 
 // Part 2 - Sort all users by age

@@ -44,8 +44,8 @@ const totalAgeMaleCodersUnder25 =
 console.log("total age of male coders under 25 = ", totalAgeMaleCodersUnder25)
 
 // Part 2 - List all male coders over 30
-const allMaleCodersOver30 = vegzas.filter((x) => x.gender === 'm' && x.age < 25)
-console.log("total age of male coders undexr 25 = ", allMaleCodersOver30)
+const allMaleCodersOver30 = vegzas.filter((x) => x.gender === 'm' && x.age > 30)
+console.log("total age of male coders undexr 30 = ", allMaleCodersOver30)
 
 
 // Part 3 - Find the total age of everyone in texasss, newieyork and vegzas combined.
