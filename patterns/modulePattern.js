@@ -1,3 +1,7 @@
+/* Using the closures, we can create objects with private 
+   and public parts. These are called modules and are very 
+   useful whenever we want to hide certain parts of an object and only expose an interface to the user of the module. 
+ */
 const peopleList = (function() {
     // private members
     const people = [];
