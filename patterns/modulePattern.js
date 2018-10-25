@@ -3,24 +3,24 @@
    useful whenever we want to hide certain parts of an object and only expose an interface to the user of the module. 
  */
 const peopleList = (function() {
-    // private members
-    const people = [];
+  // private members
+  const people = [];
 
-    // public members
-    return {
-        addPerson: function(person) {
-            people.push(person);
-        },
-        removePerson: function(person) {
-            var index = people.indexOf(person);
-            if (index >= 0) {
-                people.splice(index, 1);
-            }
-        },
-        getPeople: function() {
-            return JSON.parse(JSON.stringify(people));
-        }
-    };
+  // public members
+  return {
+		addPerson: function(person) {
+		  people.push(person);
+		},
+		removePerson: function(person) {
+		  var index = people.indexOf(person);
+		  if (index >= 0) {
+			  people.splice(index, 1);
+		  }
+		},
+		getPeople: function() {
+		  return JSON.parse(JSON.stringify(people));
+		}
+  };
 })();
 
 peopleList.addPerson("Apple");

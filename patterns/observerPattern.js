@@ -1,22 +1,23 @@
-var Subject = function() {
+var Subject = function(title) {
   var observers = [];
+  var title = title || "default";
 
   function subscribe(obs) {
     observers.push(obs);
-    console.log(`Subject subscribing Observer# ${observers.length}`);
+    console.log(`Subject ${title} subscribing Observer# ${observers.length}`);
   }
 
   function unsubscribe(obs) {
     var index = observers.indexOf(obs);
     if(index > -1) { 
       this.observers.splice(index, 1);
-      console.log(`Subject unsubscribing Observer# ${index}`);
+      console.log(`Subject ${title} unsubscribing Observer# ${index}`);
     }
   }
 
   function notify(index) {
     if (observers.length > index){
-      console.log(`Subject notifying Observer# ${index}`)
+      console.log(`Subject ${title} notifying Observer# ${index}`)
       observers[index].notify(index);
     }
   }
@@ -29,26 +30,26 @@ var Subject = function() {
   } 
 
   return {
-      subscribe: subscribe,
-      unsubscribe: unsubscribe,
-      notify: notify,
-      notifyAll: notifyAll
+    subscribe: subscribe,
+    unsubscribe: unsubscribe,
+    notify: notify,
+    notifyAll: notifyAll
   }
 
 };
 
 var Observer = function() {
-    function notify(index) {
-        console.log(`Observer ${index} is called `);
-    }
+  function notify(index) {
+      console.log(`Observer ${index} is called `);
+  }
 
-    return {
-      notify: notify
-    }
+  return {
+    notify: notify
+  }
 }
 
-var subj1 = new Subject();
-var subj2 = new Subject();
+var subj1 = new Subject("subj1");
+var subj2 = new Subject("subj2");
 var obs1 = new Observer();
 var obs2 = new Observer();
 var obs3 = new Observer();
