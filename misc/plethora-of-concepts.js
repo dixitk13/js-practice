@@ -71,3 +71,121 @@ var greetFemaleAge = greetFemale(19);
 greetFemaleAge("Luna");
 greetFemaleAge("JKR");
 greetMaleAge("Hagrid");
+
+// global variable for demo
+var avg = "global";
+
+// global function which calculates the average
+function averageFun(scores) {
+  // Add all the scores and return the total
+  var sum = scores.reduce(function(prev, cur, index, array) {
+    return prev + cur;
+  });
+
+  // The "this" keyword here will be bound to the global object, unless we set the "this" with call or apply
+  this.avg = sum / scores.length;
+}
+
+// game object with scores and a null avg variable
+var game = {
+  scores: [20, 34, 55, 46, 77],
+  avg: null
+};
+
+// If we execute the averageFun function then, "this" inside the function is bound to the global window object. so it sets the global avg rather than the game.avg
+averageFun(game.scores);
+
+// #9 the global avg variable
+console.log(avg); // 46.4
+
+// #10 but our game avg still remains null!
+console.log(game.avg); // null
+
+// lets reset the global avg variable
+avg = "global";
+
+// To set the "this" value explicitly, so that "this" is bound to the game object,
+// We use the method call(thisVar, listOfArgs)
+averageFun.call(game, game.scores);
+
+// #11 checking the avg variable
+console.log(avg); // global
+
+// #12 checking the game object's avg variable
+console.log(game.avg); // 46.4
+
+// lets reset the global avg variable and game object
+avg = "global";
+game.avg = null;
+
+// this time using the bind method for doing the same thing
+var sum = averageFun.bind(game);
+sum(game.scores);
+
+// #13 checking the avg variable
+console.log(avg); // global
+
+// #14 checking the game object's avg variable
+console.log(game.avg); // 46.4
+
+// another example for the same thing?
+
+var person = {
+  id: 94545,
+  fullName: null,
+  // setFullName is a method on the person object
+  setFullName: function(firstName, lastName) {
+    // this refers to the fullName property in this object
+    this.fullName = firstName + " " + lastName;
+  }
+};
+
+function getUserInput(firstName, lastName, callback, callbackObj) {
+  // The use of the apply method below will set the "this" value to callbackObj
+  callback.apply(callbackObj, [firstName, lastName]);
+}
+// The clientData object will be used by the Apply method to set the "this" value
+getUserInput("Steve", "Jobs", person.setFullName, person);
+
+// #15 the fullName property on the clientData was correctly set
+console.log(person.fullName); // Steve Jobs
+
+var employee = {
+  salaries: [20, 34, 55, 46, 77],
+  avgSalary: null,
+  sons: [
+    { name: "Tommy", sonID: 987, age: 23 },
+    { name: "Pau", sonID: 87, age: 10 }
+  ]
+};
+
+var company = {
+  salaries: [900, 845, 809, 950],
+  avgSalary: null,
+  avg: function() {
+    var sum = this.salaries.reduce(function(prev, cur, index, array) {
+      return prev + cur;
+    });
+    this.avgSalary = sum / this.salaries.length;
+  }
+};
+
+// We are using the apply method, so from the company's avg function we use it to apply to employee and the 2nd argument has to be an array
+company.avg.apply(employee);
+
+// #16 lets check employee's salary which got calculated by borrowing the avg func
+console.log(employee.avgSalary); // 46.4
+
+// # 17 company.avgSalary still null, it was never updated,
+console.log(company.avgSalary); // null
+
+// lets add another function to employee
+employee.calcMax = function() {
+  this.maxSalary = Math.max.apply(null, this.salaries);
+};
+
+// lets apply this avg calculations to the employee object now
+employee.calcMax.apply(employee, employee.salaries);
+
+// # 18 what the max salary?
+console.log(employee.maxSalary); // 77
