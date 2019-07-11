@@ -1,0 +1,15 @@
+{
+    "settings": {
+        "files.exclude": {
+            "**/.classpath": true,
+            "**/.project": true,
+            "**/.settings": true,
+            "**/.factorypath": true
+        }
+    },
+    "folders": [
+        {
+            "path": "/Users/dixitk13/code/js-practice"
+        }
+    ]
+}
