@@ -1,0 +1,23 @@
+{
+  "name": "js-practice",
+  "version": "1.0.0",
+  "description": "just practicing javascript ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dixitk13/js-practice.git"
+  },
+  "author": "dixitk13",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dixitk13/js-practice/issues"
+  },
+  "homepage": "https://github.com/dixitk13/js-practice#readme",
+  "dependencies": {
+    "eslint": "^6.0.1",
+    "prettier": "^1.18.2"
+  }
+}
